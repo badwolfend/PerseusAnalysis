@@ -4,9 +4,13 @@ import functions as ut
 import scipy.signal as sps
 import os
 from scipy.stats import pearsonr
+
+## Initialize Constants ##
 las_loc_start=-220e-6
 dl = 20e-6
 dt0 = 0.45
+
+
 def main(t=0, time=100, path="./"):
     t_las_begin = 86
     t_begin=80
@@ -17,6 +21,7 @@ def main(t=0, time=100, path="./"):
     x1ym = np.array([])
     x1y = np.array([])
 
+    # For all files in directory #
     for d in direct:
         if d.split('_')[0] == "data":
             dir = d
@@ -95,38 +100,11 @@ def main(t=0, time=100, path="./"):
                 ax2.plot(smooth_variance[len(dens_variance)-i], smooth_var_t[len(dens_variance)-i]*dt0, 'xk')
                 ax2.set_title('Ion Density Variance')
                 plt.tight_layout()
-                # plt.show()
 
-                # peaks = sps.find_peaks(Z_ry_rod)
-                # fig, ax = plt.subplots()
-                # im = ax.imshow(Z, interpolation='gaussian', cmap='Greys')
-                # fig2, ax2 = plt.subplots()
-                # ax2.plot(X*data['L0/dxi'], Z_ry_rod, color='k')
-                # ax2.plot(X[peaks[0]]*data['L0/dxi'], Z_ry_rod[peaks[0]], 'rX')
-                # plt.axvline(x=XLoc*data['L0/dxi'], color='k', linestyle='--')
-                # plt.title('T= '+str(round(data['T0*t']*10**9))+' ns')
-    # plt.show()
 
     corry1, _ = pearsonr(x1y, x1ym)
     print(corry1)
     plt.show()
-    # fig, ax = plt.subplots()
-    #
-    # print("dx = %f, dy = %f" %(data0['L0/dxi'], data0['L0/dyi']))
-    # xaxis = np.arange(1, 7)*data['L0/dxi']*1000
-    # ax.plot(xaxis, [corry1, corry2, corry3, corry4, corry5, corry6], 'xk')
-    # plt.axis([0, xaxis[-1], 0, 1])
-    #
-    # # plt.legend()
-    # plt.show()
-    #
-    # ## LTD Current Plot ##
-    # peak = 250 #kA
-    # tr = 250 #ns
-    # tf = 1.5*tr #ns
-    # tdp = 6*tr #ns
-    # fig, ax = plt.subplots()
-    # im = ax.plot(ut.Icur_LTD(np.arange(0, tdp), peak, tr, tdp), 'k')
-    # plt.show()
+
 if __name__ == '__main__':
     main(path="../Charon/Power_Sims/run31")
