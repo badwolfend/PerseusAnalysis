@@ -20,6 +20,7 @@ data_v = { "rh" : 0,
            "eta": 15,
           }
 
+
 def getTile(t, pq, dir):
     """
     Returns the tiles for a time and p/q coordinate.
@@ -30,7 +31,13 @@ def getTile(t, pq, dir):
     filename = open(dir+'/t_'+str(t)+'_mpip_'+str(pq[0])+'_mpiq_'+str(pq[1])+'.pickle', 'rb')
     return pickle.load(filename)
 
+
 def reduce_y(A):
+    """
+    Reduce
+    :param A:
+    :return:
+    """
     return np.mean(A,axis=0)
 
 def reduce_x(A):

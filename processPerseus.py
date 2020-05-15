@@ -11,7 +11,7 @@ dl = 20e-6
 dt0 = 0.45
 
 
-def main(t=0, time=100, path="./"):
+def main_2(t=0, time=100, path="./"):
     t_las_begin = 86
     t_begin=80
 
@@ -107,4 +107,4 @@ def main(t=0, time=100, path="./"):
     plt.show()
 
 if __name__ == '__main__':
-    main(path="../Charon/Power_Sims/run31")
+    main_2(path="../Charon/Power_Sims/run31")
